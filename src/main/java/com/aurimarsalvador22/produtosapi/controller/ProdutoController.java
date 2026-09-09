@@ -4,7 +4,6 @@ import com.aurimarsalvador22.produtosapi.model.Produto;
 import com.aurimarsalvador22.produtosapi.repository.ProdutoRepository;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Optional;
 import java.util.UUID;
 
 @RestController
@@ -29,9 +28,14 @@ public class ProdutoController {
         return produto;
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("{id}")
     public Produto obterProdutoPorId(@PathVariable("id") String id){
         return produtoRepository.findById(id).orElse(null);
+    }
+
+    @DeleteMapping("{id}")
+    public void deletarProdutoPorId(@PathVariable("id") String id){
+        produtoRepository.deleteById(id);
     }
 
 }
