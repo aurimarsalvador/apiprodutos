@@ -29,8 +29,8 @@ public class ProdutoController {
         return produto;
     }
 
-    @GetMapping
-    public Produto obterProdutoPorId(String id){
+    @GetMapping("/{id}")
+    public Produto obterProdutoPorId(@PathVariable("id") String id){
         return produtoRepository.findById(id).orElse(null);
     }
 
